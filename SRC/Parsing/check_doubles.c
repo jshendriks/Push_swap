@@ -6,11 +6,10 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:21:41 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 11:23:36 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/09 11:28:10 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
-#include "./../Utils/utils.h"
 
 /*This file contains the function check_doubles(t_stack *stck)
  * check_doubles(t_stack *stck):

@@ -6,11 +6,10 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:18:09 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 11:21:22 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/09 11:29:20 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
-#include "./../Utils/utils.h"
 
 /*This file contains the functions:
 			-check_strnum(char *str)

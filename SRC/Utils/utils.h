@@ -19,6 +19,11 @@
 # include "../../libft/libft.h"
 # include "./../src.h"
 
+//FUNCTION TO MAKE STACK-----------
+t_stack    *ft_makestack_int(int argc, char *argv[]);
+/*This function returns a stack filled with the given arguments.
+  The input must be correct according to the check functions.*/
+
 //FUNCTIONS TO FREE ----------------
 void	ft_free_double(char **ptr_subs);
 /*This function frees the entries in the double pointer, 

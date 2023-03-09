@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 #include "parsing.h"
 
+static int    rec_atoi(const char *str, int nb, int sgn, int *flw);
+
 static int	ft_isspace(int c)
 {
 	if (c == '\t' || c == '\n' || c == '\v')

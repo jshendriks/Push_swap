@@ -27,7 +27,7 @@
 		This function checks whether the given
 		stack a is sorted in descending order
 		by iterating through the stack.
-		If a is NULL, it returns -1.
+		If a is NULL, it returns -2.
 		If a is not sorted in descending order,
 		it returns the index of the node where the 
 		descending order is interrupted.

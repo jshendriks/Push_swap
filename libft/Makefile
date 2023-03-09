@@ -6,7 +6,7 @@
 #    By: jhendrik <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/28 10:58:27 by jhendrik      #+#    #+#                  #
-#    Updated: 2023/03/09 11:05:02 by jhendrik      ########   odam.nl          #
+#    Updated: 2023/03/09 18:45:27 by jhendrik      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,8 +92,9 @@ Bold="\033[1m"
 all: $(NAME)
 
 $(NAME): $(OBJFILES)
+	@echo $(Light_Blue) Compiling $(NAME) $(Reset)
 	@$(AR) -rsc $@ $^
-	@echo $(Green) $(Bold)Made $(NAME) succesfully!$(Reset) $(Reset)
+	@echo $(Green) Made $(NAME) succesfully! $(Reset)
 
 bonus:
 	@$(MAKE) BONUS=1 all
@@ -102,9 +103,11 @@ bonus:
 	@$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
+	@echo $(Yellow) Cleaning $(NAME) $(Reset)
 	@rm -f $(OBJFILES) $(OBJFILES_BONUS)
 
 fclean: clean
+	@echo $(Yellow) Thorough cleaning $(NAME) $(Reset)
 	@rm -f $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:39:32 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/21 15:12:04 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 18:11:58 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <unistd.h>
 # include <limits.h>
 # include "../../libft/libft.h"
-# include "./../src.h"
+# include "./../types.h"
+# include "./../Operations/operations.h"
 
 //FUNCTION TO MAKE STACK-----------
-t_stack    *ft_makestack_int(int argc, char *argv[]);
+t_stack	*ft_makestack_int(int argc, char *argv[]);
 /*This function returns a stack filled with the given arguments.
   The input must be correct according to the check functions.*/
 
@@ -86,4 +87,7 @@ t_stack	*ft_max(t_stack *head);
 t_stack	*ft_min(t_stack *head);
 /*Returns the node in the given stack which contains the smallest
  * integer*/
+
+//FUNCTION TO MERGE TWO SORTED STACKS ------------
+void	merge(t_stack **a, t_stack **b, size_t n);
 #endif

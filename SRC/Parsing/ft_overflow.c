@@ -6,12 +6,12 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:07:06 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 11:17:24 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 17:48:32 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
 
-static int    rec_atoi(const char *str, int nb, int sgn, int *flw);
+static int	rec_atoi(const char *str, int nb, int sgn, int *flw);
 
 static int	ft_isspace(int c)
 {

@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:25:37 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 11:27:43 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 17:46:30 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <unistd.h>
 # include <limits.h>
 # include "../../libft/libft.h"
-# include "./../src.h"
+# include "../Utils/utils.h"
+# include "./../types.h"
 
 //FUNCTIONS TO CHECK INPUT ----------
 int	check_input_nums(int argc, char *argv[]);

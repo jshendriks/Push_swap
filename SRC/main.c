@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 18:46:42 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/21 15:35:12 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 17:09:06 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "src.h"
@@ -53,38 +53,8 @@ static int	ft_free(t_stack **a, t_stack **b)
 
 static int	ft_error(t_stack **a, t_stack **b)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	return (ft_free(a, b));
-}
-
-static int	ft_printfstack(t_stack *stck)
-{
-	t_stack	*tmp;
-	int		i;
-	int		wrt;
-	int		rtn;
-
-	tmp = stck;
-	i = 0;
-	rtn = 0;
-	if (stck == NULL)
-		rtn = ft_printf("NULL\n");
-	else
-	{
-		while (tmp != NULL)
-		{
-			wrt = ft_printf("Node %i: %p, %L, %i, %p", i, tmp->prev, tmp->index, tmp->content, tmp->next);
-			if (wrt == -1)
-				return (-1);
-			wrt = ft_printf("\t Own ptr: %p\n", tmp);
-			if (wrt == -1)
-				return (-1);
-			rtn += wrt;
-			tmp = tmp->next;
-			i++;
-		}
-	}
-	return (rtn);
 }
 
 static int	after_first_check(int argc, char *argv[])
@@ -94,8 +64,6 @@ static int	after_first_check(int argc, char *argv[])
 	int		rtn;
 
 	a = ft_makestack_int(argc, argv);
-	ft_printf("Stack a before sorting:\n");
-	ft_printfstack(a);
 	b = NULL;
 	if (a == NULL)
 		return (ft_error(&a, &b));
@@ -104,10 +72,6 @@ static int	after_first_check(int argc, char *argv[])
 		if (issorted_asc(a) >= 0)
 		{
 			rtn = ft_sorting(&a, &b);
-			ft_printf("Stack a after sorting:\n");
-			ft_printfstack(a);
-			ft_printf("Stack b after sorting:\n");
-			ft_printfstack(b);
 			if (a != NULL)
 				ft_stackclear(&a);
 			if (b != NULL)

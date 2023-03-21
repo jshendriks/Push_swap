@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 18:07:19 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/21 14:54:53 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 17:41:38 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <unistd.h>
 # include <limits.h>
 # include "../../libft/libft.h"
-# include "./../src.h"
-
-typedef void	(*t_stckfnc)(t_stack **a, t_stack **b);
+# include "../types.h"
+# include "../Operations/operations.h"
+# include "../Utils/utils.h"
 
 void	radix_sort_asc(t_stack **a, t_stack **b);
 /*Sorts the given stack a, using stack b and bitwise operations.*/

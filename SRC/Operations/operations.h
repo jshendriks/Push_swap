@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 17:53:49 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 18:03:04 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 17:45:29 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <unistd.h>
 # include <limits.h>
 # include "../../libft/libft.h"
-# include "./../src.h"
+# include "../Utils/utils.h"
+# include "../types.h"
 
 //BASIC OPERATIONS TO SORT WITH ---------------
 void	ft_push_a(t_stack **a, t_stack **b);

@@ -6,9 +6,10 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 12:20:21 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/20 12:24:52 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 15:14:57 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+#include "utils.h"
 
 t_stack	*ft_max(t_stack *head)
 {
@@ -26,7 +27,7 @@ t_stack	*ft_max(t_stack *head)
 				max = node;
 			node = node->next;
 		}
-		return (max->content);
+		return (max);
 	}
 	return (max);
 }
@@ -47,7 +48,7 @@ t_stack	*ft_min(t_stack *head)
 				min = node;
 			node = node->next;
 		}
-		return (min->content);
+		return (min);
 	}
 	return (min);
 }

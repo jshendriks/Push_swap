@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 18:07:19 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/20 11:56:31 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 14:54:53 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../../libft/libft.h"
 # include "./../src.h"
 
-typedef void	(*t_function)(t_stack **a, t_stack **b);
+typedef void	(*t_stckfnc)(t_stack **a, t_stack **b);
 
 void	radix_sort_asc(t_stack **a, t_stack **b);
 /*Sorts the given stack a, using stack b and bitwise operations.*/
@@ -36,5 +36,14 @@ void	ft_insertionsort_asc(t_stack **a, int c);
 /*Sorts in ascending order the given stack by comparing nodes.*/
 void	ft_insertionsort_des(t_stack **a, int c);
 /*Sorts in descending order the given stack by comparing nodes.*/
+
+void	ft_smallsort(t_stack **a, t_stack **b);
+void	ft_two_asc_a(t_stack **a, t_stack **b);
+void	ft_two_des_b(t_stack **a, t_stack **b);
+void	ft_three_des_b(t_stack **a, t_stack **b);
+void	ft_three_asc_a(t_stack **a, t_stack **b);
+void	ft_four(t_stack **a, t_stack **b);
+void	ft_five(t_stack **a, t_stack **b);
+void	ft_six(t_stack **a, t_stack **b);
 
 #endif

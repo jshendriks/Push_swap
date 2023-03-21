@@ -6,117 +6,73 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 12:01:56 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/21 14:15:29 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 16:00:26 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sorting.h"
 
-void	ft_two_asc_a(t_stack **a)
+static int	ft_printfstack(t_stack *stck)
 {
-	if (a != NULL)
+	t_stack	*tmp;
+	int		i;
+	int		wrt;
+	int		rtn;
+
+	tmp = stck;
+	i = 0;
+	rtn = 0;
+	if (stck == NULL)
+		rtn = ft_printf("NULL\n");
+	else
 	{
-		if ((*a) != NULL)
+		while (tmp != NULL)
 		{
-			if (ft_stacksize(*a) == 2)
-			{
-				if ((*a)->content > ((*a)->next)->content)
-					swap_a(a);
-			}
+			wrt = ft_printf("Node %i: %p, %L, %i, %p", i, tmp->prev, tmp->index, tmp->content, tmp->next);
+			if (wrt == -1)
+				return (-1);
+			wrt = ft_printf("\t Own ptr: %p\n", tmp);
+			if (wrt == -1)
+				return (-1);
+			rtn += wrt;
+			tmp = tmp->next;
+			i++;
 		}
+	}
+	return (rtn);
+}
+
+static void	comparing(t_stack **a, t_stack **b, t_stack *nodea, t_stack *nodeb)
+{
+	size_t	r;
+
+	if (nodea->next == NULL)
+	{
+		if (nodeb->content > nodea->content)
+		{
+			push_a(a, b);
+			rotate_a(a);
+		}
+		else
+		{
+			rrotate_a(a);
+			push_a(a, b);
+			rotate_a_ntimes(a, 2);
+		}
+	}
+	else if (nodeb->content <= nodea->content)
+	{
+		r = nodea->index;
+		rotate_a_ntimes(a, r);
+		push_a(a, b);
+		rrotate_a_ntimes(a, r);
 	}
 }
 
-void	ft_two_des_b(t_stack **a)
-{
-	if (a != NULL)
-	{
-		if ((*a) != NULL)
-		{
-			if (ft_stacksize(*a) == 2)
-			{
-				if ((*a)->content < ((*a)->next)->content)
-					swap_b(a);
-			}
-		}
-	}
-}
-
-void	ft_three_des_b(t_stack **a)
-{
-	t_stack	*max;
-	t_stack	*min;
-
-	if (a != NULL)
-	{
-		if ((*a) != NULL)
-		{
-			if (ft_stacksize(*a) == 3)
-			{
-				max = ft_max(*a);
-				min = ft_min(*a);
-				if (max->index == 2 && min->index == 0)
-				{
-					swap_b(a);
-					rrotate_b(a);
-				}
-				else if (max->index == 2)
-					rrotate_b(a);
-				else if (min->index == 0)
-					rotate_b(a);
-				else if (min->index == 1)
-				{
-					rrotate_b(a);
-					swap_b(a);
-				}
-				else
-					swap_b(a);
-			}
-		}
-	}
-}
-
-void	ft_three_asc_a(t_stack **a)
-{
-	t_stack	*max;
-	t_stack	*min;
-
-	if (a != NULL)
-	{
-		if ((*a) != NULL)
-		{
-			if (ft_stacksize(*a) == 3)
-			{
-				max = ft_max(*a);
-				min = ft_min(*a);
-				if (max->index == 2)
-					swap_a(a);
-				else if (min->index == 0)
-				{
-					rotate_a(a);
-					swap_a(a);
-					rrotate_a(a);
-				}
-				else if (max->index == 0 && min->index == 2)
-				{
-					rotate_a(a);
-					swap_a(a);
-				}
-				else if (min->index == 1)
-					rotate_a(a);
-				else
-					rrotate_a(a);
-			}
-		}
-	}
-}
-
-void	merge(t_stack **a, t_stack **b, size_t sizeb)
+static void	merge(t_stack **a, t_stack **b, size_t sizeb)
 {
 	t_stack	*nodea;
 	t_stack	*nodeb;
 	size_t	i;
-	size_t	j;
-	size_t	r;
 
 	i = 0;
 	nodea = *a;
@@ -125,27 +81,7 @@ void	merge(t_stack **a, t_stack **b, size_t sizeb)
 	{
 		while (nodea && nodeb == (*b))
 		{
-			if (nodea->next == NULL)
-			{
-				if (nodeb->content > nodea->content)
-				{
-					push_a(a, b);
-					rotate_a(a);
-				}
-				else
-				{
-					rrotate_a(a);
-					push_a(a, b);
-					rotate_a_ntimes(a, 2);
-				}
-			}
-			else if (nodeb->content <= nodea->content)
-			{
-				r = nodea->index;
-				rotate_a_ntimes(a, r);
-				push_a(a, b);
-				rrotate_a_ntimes(a, r);
-			}
+			comparing(a, b, nodea, nodeb);
 			nodea = nodea->next;
 		}
 		nodeb = *b;
@@ -163,8 +99,8 @@ void	ft_four(t_stack **a, t_stack **b)
 			if (ft_stacksize(*a) == 4)
 			{
 				push_b_ntimes(a, b, 2);
-				ft_two_asc_a(a);
-				ft_two_des_b(b);
+				ft_two_asc_a(a, b);
+				ft_two_des_b(a, b);
 				if ((*b)->content < (*a)->content)
 					push_a_ntimes(a, b, 2);
 				else if (((*b)->next) > ((*a)->next))
@@ -173,20 +109,7 @@ void	ft_four(t_stack **a, t_stack **b)
 					rotate_a_ntimes(a, 2);
 				}
 				else
-				{
-					if ((*b)->content <= ((*a)->next)->content)
-					{
-						rotate_a(a);
-						push_a(a, b);
-						rrotate_a(a);
-					}
-					else
-					{
-						push_a(a, b);
-						rotate_a(a);
-					}
-
-				}
+					merge(a, b, 2);
 			}
 		}
 	}
@@ -201,8 +124,10 @@ void	ft_five(t_stack **a, t_stack **b)
 			if (ft_stacksize(*a) == 5)
 			{
 				push_b_ntimes(a, b, 2);
-				ft_three_asc_a(a);
-				ft_two_des_b(b);
+				if (issorted_asc(*a) >= 0)
+					ft_three_asc_a(a, b);
+				if (issorted_des(*b) >= 0)
+					ft_two_des_b(a, b);
 				if ((*b)->content < (*a)->content)
 					push_a_ntimes(a, b, 2);
 				else if (((*b)->next)->content > (((*a)->next)->next)->content)
@@ -211,9 +136,7 @@ void	ft_five(t_stack **a, t_stack **b)
 					rotate_a_ntimes(a, 2);
 				}
 				else
-				{
-
-				}
+					merge(a, b, 2);
 			}
 		}
 	}
@@ -228,8 +151,10 @@ void	ft_six(t_stack **a, t_stack **b)
 			if (ft_stacksize(*a) == 6)
 			{
 				push_b_ntimes(a, b, 3);
-				ft_three_asc_a(a);
-				ft_three_des_b(b);
+				if (issorted_asc(*a) >= 0)
+					ft_three_asc_a(a, b);
+				if (issorted_des(*b) >= 0)
+					ft_three_des_b(a, b);
 				if ((*b)->content < (*a)->content)
 					push_a_ntimes(a, b, 3);
 				else if ((((*b)->next)->next)->content > (((*a)->next)->next)->content)
@@ -238,9 +163,7 @@ void	ft_six(t_stack **a, t_stack **b)
 					rotate_a_ntimes(a, 3);
 				}
 				else
-				{
-
-				}
+					merge(a, b, 3);
 			}
 		}
 	}

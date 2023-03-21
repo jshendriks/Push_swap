@@ -6,7 +6,7 @@
 #    By: jhendrik <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/09 18:24:29 by jhendrik      #+#    #+#                  #
-#    Updated: 2023/03/09 18:45:22 by jhendrik      ########   odam.nl          #
+#    Updated: 2023/03/21 15:12:33 by jhendrik      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ LIBS := ./libft/libft.a
 SRCFILES := ./SRC/Sorting/insertionsort.c		\
 			./SRC/Sorting/radix_sort.c			\
 			./SRC/Sorting/reverse_order.c		\
+			./SRC/Sorting/ft_smallsort.c		\
+			./SRC/Sorting/smallsort_nb.c		\
 			./SRC/Operations/ft_push_ntimes.c	\
 			./SRC/Operations/ft_push.c			\
 			./SRC/Operations/ft_rotate_ntimes.c	\
@@ -36,6 +38,7 @@ SRCFILES := ./SRC/Sorting/insertionsort.c		\
 			./SRC/Utils/ft_stackadd.c			\
 			./SRC/Utils/ft_stackdel.c			\
 			./SRC/Utils/ft_stackother.c			\
+			./SRC/Utils/ft_mm.c					\
 			./SRC/main.c
 
 OBJFILES := $(SRCFILES:.c=.o)

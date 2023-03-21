@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:39:32 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 12:15:23 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/20 12:24:37 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,11 @@ void	ft_stackclear(t_stack **stck);
   If *stck does not point to the first node of the stack,
   the previous node is set to be the last.*/
 
+//FUNCTIONS FOR DETERMINING MAX/MIN IN STACK -------
+t_stack	*ft_max(t_stack *head);
+/*Returns the node in the given stack which contains the biggest
+ * integer*/
+t_stack	*ft_min(t_stack *head);
+/*Returns the node in the given stack which contains the smallest
+ * integer*/
 #endif

@@ -6,40 +6,10 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 12:01:56 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/21 16:00:26 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/21 18:03:02 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sorting.h"
-
-static int	ft_printfstack(t_stack *stck)
-{
-	t_stack	*tmp;
-	int		i;
-	int		wrt;
-	int		rtn;
-
-	tmp = stck;
-	i = 0;
-	rtn = 0;
-	if (stck == NULL)
-		rtn = ft_printf("NULL\n");
-	else
-	{
-		while (tmp != NULL)
-		{
-			wrt = ft_printf("Node %i: %p, %L, %i, %p", i, tmp->prev, tmp->index, tmp->content, tmp->next);
-			if (wrt == -1)
-				return (-1);
-			wrt = ft_printf("\t Own ptr: %p\n", tmp);
-			if (wrt == -1)
-				return (-1);
-			rtn += wrt;
-			tmp = tmp->next;
-			i++;
-		}
-	}
-	return (rtn);
-}
 
 static void	comparing(t_stack **a, t_stack **b, t_stack *nodea, t_stack *nodeb)
 {
@@ -68,7 +38,7 @@ static void	comparing(t_stack **a, t_stack **b, t_stack *nodea, t_stack *nodeb)
 	}
 }
 
-static void	merge(t_stack **a, t_stack **b, size_t sizeb)
+static void	ft_merge(t_stack **a, t_stack **b, size_t sizeb)
 {
 	t_stack	*nodea;
 	t_stack	*nodeb;
@@ -90,6 +60,24 @@ static void	merge(t_stack **a, t_stack **b, size_t sizeb)
 	}
 }
 
+static void	merge(t_stack **a, t_stack **b, size_t n)
+{
+	t_stack	*lasta;
+	t_stack	*lastb;
+
+	lasta = ft_stacklast(*a);
+	lastb = ft_stacklast(*b);
+	if ((*b)->content < (*a)->content)
+		push_a_ntimes(a, b, n);
+	else if (lastb->content > lasta->content)
+	{
+		push_a_ntimes(a, b, n);
+		rotate_a_ntimes(a, n);
+	}
+	else
+		ft_merge(a, b, n);
+}
+
 void	ft_four(t_stack **a, t_stack **b)
 {
 	if (a != NULL && b != NULL)
@@ -109,7 +97,7 @@ void	ft_four(t_stack **a, t_stack **b)
 					rotate_a_ntimes(a, 2);
 				}
 				else
-					merge(a, b, 2);
+					ft_merge(a, b, 2);
 			}
 		}
 	}
@@ -144,6 +132,9 @@ void	ft_five(t_stack **a, t_stack **b)
 
 void	ft_six(t_stack **a, t_stack **b)
 {
+	t_stack	*lastb;
+	t_stack	*lasta;
+
 	if (a != NULL && b != NULL)
 	{
 		if ((*a) != NULL && (*b) == NULL)
@@ -157,7 +148,9 @@ void	ft_six(t_stack **a, t_stack **b)
 					ft_three_des_b(a, b);
 				if ((*b)->content < (*a)->content)
 					push_a_ntimes(a, b, 3);
-				else if ((((*b)->next)->next)->content > (((*a)->next)->next)->content)
+				lastb = (((*b)->next)->next);
+				lasta = (((*a)->next)->next);
+				else if (lastb->content > lasta->content)
 				{
 					push_a_ntimes(a, b, 3);
 					rotate_a_ntimes(a, 3);

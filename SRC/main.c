@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 18:46:42 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/21 17:09:06 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/23 14:10:38 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "src.h"
@@ -51,9 +51,9 @@ static int	ft_free(t_stack **a, t_stack **b)
 	return (0);
 }
 
-static int	ft_error(t_stack **a, t_stack **b)
+static int	ft_errormessage(t_stack **a, t_stack **b, char *mess, int fd)
 {
-	write(2, "Error\n", 6);
+	ft_putstr_fd(mess, fd);
 	return (ft_free(a, b));
 }
 
@@ -66,7 +66,7 @@ static int	after_first_check(int argc, char *argv[])
 	a = ft_makestack_int(argc, argv);
 	b = NULL;
 	if (a == NULL)
-		return (ft_error(&a, &b));
+		return (ft_errormessage(&a, &b, "Error\n", 2));
 	if (check_doubles(a) == 1)
 	{
 		if (issorted_asc(a) >= 0)
@@ -79,10 +79,10 @@ static int	after_first_check(int argc, char *argv[])
 			return (rtn);
 		}
 		else
-			return (ft_error(&a, &b));
+			return (ft_errormessage(&a, &b, "Already sorted\n", 2));
 	}
 	else
-		return (ft_error(&a, &b));
+		return (ft_errormessage(&a, &b, "Error\n", 2));
 }
 
 int	main(int argc, char *argv[])
@@ -93,11 +93,15 @@ int	main(int argc, char *argv[])
 
 	a = NULL;
 	b = NULL;
-	if (check_input_nums(argc, argv) == 1)
+	if (argc > 1)
 	{
-		rtn = after_first_check(argc, argv);
-		return (rtn);
+		if (check_input_nums(argc, argv) == 1)
+		{
+			rtn = after_first_check(argc, argv);
+			return (rtn);
+		}
+		else
+			return (ft_errormessage(&a, &b, "Error\n", 2));
 	}
-	else
-		return (ft_error(&a, &b));
+	return (0);
 }

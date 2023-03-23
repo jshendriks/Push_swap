@@ -6,7 +6,7 @@
 #    By: jhendrik <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/09 18:24:29 by jhendrik      #+#    #+#                  #
-#    Updated: 2023/03/21 18:11:05 by jhendrik      ########   odam.nl          #
+#    Updated: 2023/03/23 09:49:09 by jhendrik      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRCFILES := ./SRC/Sorting/insertionsort.c		\
 			./SRC/Sorting/reverse_order.c		\
 			./SRC/Sorting/ft_smallsort.c		\
 			./SRC/Sorting/smallsort_nb.c		\
+			./SRC/Sorting/ft_small_two.c		\
+			./SRC/Sorting/ft_small_three.c		\
 			./SRC/Operations/ft_push_ntimes.c	\
 			./SRC/Operations/ft_push.c			\
 			./SRC/Operations/ft_rotate_ntimes.c	\

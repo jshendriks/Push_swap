@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:18:09 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 11:29:20 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/23 11:30:28 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -82,8 +82,6 @@ int	check_input_nums(int argc, char *argv[])
 	int		j;
 	char	**ptr;
 
-	if (argc <= 1)
-		return (0);
 	i = 1;
 	while (i < argc)
 	{

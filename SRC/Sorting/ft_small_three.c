@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 09:36:35 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/23 09:47:01 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/27 14:08:29 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sorting.h"
@@ -37,9 +37,8 @@ static void	cases_asc(t_stack **a, t_stack *max, t_stack *min)
 		swap_a(a);
 	else if (min->index == 0)
 	{
-		rotate_a(a);
 		swap_a(a);
-		rrotate_a(a);
+		rotate_a(a);
 	}
 	else if (max->index == 0 && min->index == 2)
 	{

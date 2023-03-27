@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:39:32 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/21 18:11:58 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/27 15:14:01 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 t_stack	*ft_makestack_int(int argc, char *argv[]);
 /*This function returns a stack filled with the given arguments.
   The input must be correct according to the check functions.*/
+t_mstck	*ft_makemstck_int(int argc, char *argv[]);
+/*...*/
 
 //FUNCTIONS TO FREE ----------------
 void	ft_free_double(char **ptr_subs);
@@ -50,7 +52,7 @@ int		issorted_des(t_stack *a);
   where the descending order is interupted.
   If a is NULL, it returns -2.*/
 
-//FUNCTIONS FOR DOUBLE LINKED LIST --
+//FUNCTIONS FOR DOUBLE LINKED LIST TYPE T_STACK --
 t_stack	*ft_stacknew(int content);
 /*Allocates (using malloc) a new node with the given content
   and returns this node. If the malloc fails it returns NULL.*/
@@ -79,6 +81,26 @@ void	ft_stackclear(t_stack **stck);
   Once the stack is cleared, *stck is set to NULL.
   If *stck does not point to the first node of the stack,
   the previous node is set to be the last.*/
+
+//FUNCTIONS FOR DOUBLE LINKED LIST TYPE T_MSTCK --
+t_mstck	*ft_mstcknew(int content);
+/*...*/
+t_mstck	*ft_mstcklast(t_mstck *stck);
+/*...*/
+t_mstck	*ft_mstckfirst(t_mstck *stck);
+/*...*/
+size_t	ft_mstcksize(t_mstck *stck);
+/*...*/
+void	ft_mstck_indexing(t_mstck *stck);
+/*...*/
+void	ft_mstckadd_front(t_mstck **stck, t_mstck *new);
+/*...*/
+void	ft_mstckadd_back(t_mstck **stck, t_mstck *new);
+/*...*/
+void	ft_mstckdelone(t_mstck *stck);
+/*...*/
+void	ft_mstckclear(t_mstck **stck);
+/*...*/
 
 //FUNCTIONS FOR DETERMINING MAX/MIN IN STACK -------
 t_stack	*ft_max(t_stack *head);

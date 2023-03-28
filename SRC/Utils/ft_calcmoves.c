@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 17:28:27 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/27 18:27:02 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/28 14:28:40 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -14,6 +14,7 @@
 void	calcmoves_upup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min)
 {
 	t_moves	*move_upup;
+	t_mstck	*place;
 
 	move_upup = ((node->map)->upup);
 	move_upup->ra = (node->index);
@@ -29,12 +30,15 @@ void	calcmoves_upup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min)
 	}
 	else
 	{
-		//find a way to determine where the node belongs in b
-		//then enter the moves in the move_upup to get it there
+		place = ft_place(node, b);
+		if (place != NULL)
+			move_upup->rb = place->index;
+		(move_upup->pb) += 1;
 	}
+	cleanup_moves(move_upup);
 }
 
-void	ft_calcmap(t_mstck *node, t_mstck **b)
+void	ft_calcnodemap(t_mstck *node, t_mstck **b, size_t sizea)
 {
 	t_mstck	max;
 	t_mstck	min;
@@ -45,6 +49,31 @@ void	ft_calcmap(t_mstck *node, t_mstck **b)
 		{
 			max = ft_mstckmax(*b);
 			min = ft_mstckmin(*b);
+			calcmoves_upup(node, b, max, min);
+			calcmoves_updown(node, b, max, min);
+			calcmoves_downdown(node, b, max, min, sizea);
+			calcmoves_downup(node, b, max, min, sizea);
+		}
+	}
+}
+
+void	ft_calcmaps(t_mstck **a, t_mstck **b)
+{
+	t_mstck	*nodea;
+	size_t	sizea;
+
+	if (a != NULL && b != NULL)
+	{
+		if (*a != NULL && *b != NULL)
+		{
+			set_mapszero(a);
+			nodea = *a;
+			sizea = ft_mstcksize(*a);
+			while (nodea)
+			{
+				ft_calcnodemap(nodea, b, sizea);
+				nodea = nodea->next;
+			}
 		}
 	}
 }

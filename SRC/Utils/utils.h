@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:39:32 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/27 15:14:01 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/28 14:30:11 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,32 @@ t_stack	*ft_max(t_stack *head);
 t_stack	*ft_min(t_stack *head);
 /*Returns the node in the given stack which contains the smallest
  * integer*/
+t_mstck	*ft_mstckmax(t_mstck *head);
+/*...*/
+t_mstck	*ft_mstckmin(t_mstck *head);
+/*...*/
+
+//FUNCTIONS TO DETERMINE LEAST POSSIBLE MOVES -----
+t_mstck	*ft_place(t_mstck *node, t_mstck **b);
+/*...*/
+
+//FUNCTIONS FOR MAPS ----------------------------
+void	set_mapszero(t_mstck **a);
+/*...*/
+void	cleanup_moves(t_moves *move);
+/*...*/
+void	calcmoves_upup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min);
+/*...*/
+void	calcmoves_updown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min);
+/*...*/
+void	calcmoves_downdown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, size_t sizea);
+/*...*/
+void	calcmoves_downup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, size_t sizea);
+/*...*/
+void	ft_calcnodemap(t_mstck *node, t_mstck **b, size_t sizea);
+/*...*/
+void	ft_calcmaps(t_mstck **a, t_mstck **b);
+/*...*/
 
 //FUNCTION TO MERGE TWO SORTED STACKS ------------
 void	merge(t_stack **a, t_stack **b, size_t n);

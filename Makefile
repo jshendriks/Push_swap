@@ -6,7 +6,7 @@
 #    By: jhendrik <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/09 18:24:29 by jhendrik      #+#    #+#                  #
-#    Updated: 2023/03/23 09:49:09 by jhendrik      ########   odam.nl          #
+#    Updated: 2023/03/28 11:15:44 by jhendrik      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,13 @@ SRCFILES := ./SRC/Sorting/insertionsort.c		\
 			./SRC/Utils/ft_stackother.c			\
 			./SRC/Utils/ft_mm.c					\
 			./SRC/Utils/ft_merge.c				\
-			./SRC/main.c
+			./SRC/Utils/ft_makemstck.c			\
+			./SRC/Utils/ft_mstckadd.c			\
+			./SRC/Utils/ft_mstckdel.c			\
+			./SRC/Utils/ft_mstcknew.c			\
+			./SRC/Utils/ft_mstckother.c			\
+			./SRC/Utils/ft_place.c				\
+			./SRC/main_test.c
 
 OBJFILES := $(SRCFILES:.c=.o)
 CFLAGS ?= -Wall -Werror -Wextra

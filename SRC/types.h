@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 17:36:47 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/27 18:21:24 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/28 14:26:20 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ typedef struct s_map
  * updown: use rotate_a and rrotate_b
  * downdown: use rrotate_a and rrotate_b
  * downup: use rrotate_a and rotate_b */
-typedef struct s_mstck;
+typedef struct s_mstck
 {
 	struct s_mstck	*prev;
 	size_t			index;
 	int				content;
 	t_map			*map;
+	int				mark;
 	struct s_mstck	*next;
 }	t_mstck;
 

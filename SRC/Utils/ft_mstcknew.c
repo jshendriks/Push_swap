@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 14:36:51 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:58:55 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/03/28 14:27:03 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -80,6 +80,7 @@ t_mstck	*ft_mstcknew(int content)
 	node->prev = NULL;
 	node->content = content;
 	node->index = 0;
+	node->mark = 0;
 	node->next = NULL;
 	return (node);
 }

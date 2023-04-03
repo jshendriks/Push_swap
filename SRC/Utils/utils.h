@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:39:32 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/28 14:30:11 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/03 17:22:02 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ t_mstck	*ft_mstckmin(t_mstck *head);
 //FUNCTIONS TO DETERMINE LEAST POSSIBLE MOVES -----
 t_mstck	*ft_place(t_mstck *node, t_mstck **b);
 /*...*/
+t_mstck	*ft_place_asc(t_mstck *node, t_mstck **a);
+/*...*/
 
 //FUNCTIONS FOR MAPS ----------------------------
 void	set_mapszero(t_mstck **a);
@@ -135,7 +137,15 @@ void	ft_calcnodemap(t_mstck *node, t_mstck **b, size_t sizea);
 /*...*/
 void	ft_calcmaps(t_mstck **a, t_mstck **b);
 /*...*/
+void	set_markszero(t_mstck **a);
+/*...*/
+void	ft_markbest(t_mstck **a);
+/*...*/
 
 //FUNCTION TO MERGE TWO SORTED STACKS ------------
 void	merge(t_stack **a, t_stack **b, size_t n);
+
+//EXECUTE MAP MSTCK -----------------------------
+void	exec_best(t_mstck **a, t_mstck **b);
+/*...*/
 #endif

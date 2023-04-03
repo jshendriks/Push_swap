@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/28 14:31:01 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/28 14:49:11 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/03 13:43:35 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -16,7 +16,8 @@ static size_t	find_leastmoves(t_mstck **a)
 	t_mstck	*nodea;
 	size_t	best;
 
-	best = -1; 
+	nodea = *a;
+	best = ((nodea->map)->upup)->total;
 	while (nodea)
 	{
 		if (((nodea->map)->upup)->total < best)

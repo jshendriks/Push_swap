@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_rrotate.c                                       :+:    :+:            */
+/*   ft_rrotate_mstck.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jhendrik <marvin@codam.nl>                   +#+                     */
+/*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/09 12:29:45 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/03 14:45:06 by jhendrik      ########   odam.nl         */
+/*   Created: 2023/04/03 14:41:40 by jhendrik      #+#    #+#                 */
+/*   Updated: 2023/04/03 14:44:51 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "operations.h"
@@ -36,46 +36,46 @@
  		Calls ft_rrotate_ab(a,b) and prints a message.
  */
 
-static void	rrotate(t_stack **a)
+static void	rrotate(t_mstck **a)
 {
-	t_stack	*first;
-	t_stack	*last;
+	t_mstck	*first;
+	t_mstck	*last;
 
 	if (*a != NULL)
 	{
 		first = *a;
 		if (first->next != NULL)
 		{
-			last = ft_stacklast(*a);
+			last = ft_mstcklast(*a);
 			last->prev->next = NULL;
 			*a = last;
 			(*a)->prev = NULL;
 			(*a)->next = first;
 			first->prev = *a;
-			ft_indexing(*a);
+			ft_mstck_indexing(*a);
 		}
 	}
 }
 
-static void	ft_rrotate_ab(t_stack **a, t_stack **b)
+static void	ft_rrotate_ab(t_mstck **a, t_mstck **b)
 {
 	rrotate(a);
 	rrotate(b);
 }
 
-void	rrotate_a(t_stack **a)
+void	rrotate_a_mstck(t_mstck **a)
 {
 	rrotate(a);
 	ft_printf("rra\n");
 }
 
-void	rrotate_b(t_stack **b)
+void	rrotate_b_mstck(t_mstck **b)
 {
 	rrotate(b);
 	ft_printf("rrb\n");
 }
 
-void	rrotate_ab(t_stack **a, t_stack **b)
+void	rrotate_ab_mstck(t_mstck **a, t_mstck **b)
 {
 	ft_rrotate_ab(a, b);
 	ft_printf("rrr\n");

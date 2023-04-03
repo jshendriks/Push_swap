@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 12:24:26 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 12:29:19 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/03 14:38:57 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "operations.h"
@@ -36,7 +36,7 @@
  		Calls ft_rotate_ab(a,b) and prints message.
  */
 
-void	rotate(t_stack **a)
+static void	rotate(t_stack **a)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -57,7 +57,7 @@ void	rotate(t_stack **a)
 	}
 }
 
-void	ft_rotate_ab(t_stack **a, t_stack **b)
+static void	ft_rotate_ab(t_stack **a, t_stack **b)
 {
 	rotate(a);
 	rotate(b);

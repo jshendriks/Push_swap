@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 18:07:19 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/21 17:41:38 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/03 17:23:31 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ void	ft_three_asc_a(t_stack **a, t_stack **b);
 void	ft_four(t_stack **a, t_stack **b);
 void	ft_five(t_stack **a, t_stack **b);
 void	ft_six(t_stack **a, t_stack **b);
+
+void	ft_quirkysort(t_mstck **a, t_mstck **b);
+/*...*/
 
 #endif

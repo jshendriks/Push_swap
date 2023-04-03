@@ -6,7 +6,7 @@
 #    By: jhendrik <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/09 18:24:29 by jhendrik      #+#    #+#                  #
-#    Updated: 2023/03/28 11:15:44 by jhendrik      ########   odam.nl          #
+#    Updated: 2023/04/03 17:29:48 by jhendrik      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCFILES := ./SRC/Sorting/insertionsort.c		\
 			./SRC/Sorting/smallsort_nb.c		\
 			./SRC/Sorting/ft_small_two.c		\
 			./SRC/Sorting/ft_small_three.c		\
+			./SRC/Sorting/quirky_sort.c			\
 			./SRC/Operations/ft_push_ntimes.c	\
 			./SRC/Operations/ft_push.c			\
 			./SRC/Operations/ft_rotate_ntimes.c	\
@@ -31,6 +32,14 @@ SRCFILES := ./SRC/Sorting/insertionsort.c		\
 			./SRC/Operations/pick_rotate.c		\
 			./SRC/Operations/pick_rrotate.c		\
 			./SRC/Operations/swap.c				\
+			./SRC/Operations/ft_push_mstck.c	\
+			./SRC/Operations/ft_push_ntimes_mstck.c	\
+			./SRC/Operations/ft_rotate_mstck.c	\
+			./SRC/Operations/ft_rotate_ntimes_mstck.c	\
+			./SRC/Operations/ft_rrotate_mstck.c	\
+			./SRC/Operations/ft_rrr_ntimes_mstck.c	\
+			./SRC/Operations/ft_swap_mstck.c	\
+			./SRC/Operations/swap_mstck.c		\
 			./SRC/Parsing/ft_overflow.c			\
 			./SRC/Parsing/check_doubles.c		\
 			./SRC/Parsing/check_nbs.c			\
@@ -48,6 +57,10 @@ SRCFILES := ./SRC/Sorting/insertionsort.c		\
 			./SRC/Utils/ft_mstcknew.c			\
 			./SRC/Utils/ft_mstckother.c			\
 			./SRC/Utils/ft_place.c				\
+			./SRC/Utils/calcmoves_down.c		\
+			./SRC/Utils/exec_best.c				\
+			./SRC/Utils/ft_calcmoves.c			\
+			./SRC/Utils/ft_moves.c				\
 			./SRC/main_test.c
 
 OBJFILES := $(SRCFILES:.c=.o)

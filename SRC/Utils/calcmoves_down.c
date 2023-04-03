@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/28 13:35:50 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/28 14:13:44 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/03 17:43:25 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -22,7 +22,7 @@ static void	check_updown(t_moves *move, size_t temp, size_t sizeb)
 
 void	calcmoves_updown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min)
 {
-	t_moves	move;
+	t_moves	*move;
 	t_mstck	*place;
 	size_t	sizeb;
 
@@ -44,7 +44,7 @@ void	calcmoves_updown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min)
 
 void	calcmoves_downdown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, size_t sizea)
 {
-	t_moves	move;
+	t_moves	*move;
 	t_mstck	*place;
 	size_t	sizeb;
 	size_t	temp;
@@ -69,7 +69,7 @@ void	calcmoves_downdown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, 
 
 void	calcmoves_downup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, size_t sizea)
 {
-	t_moves	move;
+	t_moves	*move;
 	t_mstck	*place;
 	size_t	temp;
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_push.c                                          :+:    :+:            */
+/*   ft_push_mstck.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jhendrik <marvin@codam.nl>                   +#+                     */
+/*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/09 12:18:45 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/03 14:34:13 by jhendrik      ########   odam.nl         */
+/*   Created: 2023/04/03 14:27:17 by jhendrik      #+#    #+#                 */
+/*   Updated: 2023/04/03 14:32:00 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "operations.h"
@@ -34,10 +34,10 @@
  		Calls the function ft_push_b() and prints message.
  */
 
-static void	ft_push_a(t_stack **a, t_stack **b)
+static void	ft_push_a(t_mstck **a, t_mstck **b)
 {
-	t_stack	*tmp_b1;
-	t_stack	*tmp_b2;
+	t_mstck	*tmp_b1;
+	t_mstck	*tmp_b2;
 
 	if (b != NULL)
 	{
@@ -53,17 +53,17 @@ static void	ft_push_a(t_stack **a, t_stack **b)
 			}
 			else
 				*b = NULL;
-			ft_stackadd_front(a, tmp_b1);
-			ft_indexing(*a);
+			ft_mstckadd_front(a, tmp_b1);
+			ft_mstck_indexing(*a);
 			if (*b != NULL)
-				ft_indexing(*b);
+				ft_mstck_indexing(*b);
 		}
 	}
 }
 
-static void	ft_push_b(t_stack **a, t_stack **b)
+static void	ft_push_b(t_mstck **a, t_mstck **b)
 {
-	t_stack	*tmp_a;
+	t_mstck	*tmp_a;
 
 	if (*a != NULL)
 	{
@@ -76,19 +76,19 @@ static void	ft_push_b(t_stack **a, t_stack **b)
 		}
 		else
 			*a = NULL;
-		ft_stackadd_front(b, tmp_a);
-		ft_indexing(*a);
-		ft_indexing(*b);
+		ft_mstckadd_front(b, tmp_a);
+		ft_mstck_indexing(*a);
+		ft_mstck_indexing(*b);
 	}
 }
 
-void	push_a(t_stack **a, t_stack **b)
+void	push_a_mstck(t_mstck **a, t_mstck **b)
 {
 	ft_push_a(a, b);
 	ft_printf("pa\n");
 }
 
-void	push_b(t_stack **a, t_stack **b)
+void	push_b_mstck(t_mstck **a, t_mstck **b)
 {
 	ft_push_b(a, b);
 	ft_printf("pb\n");

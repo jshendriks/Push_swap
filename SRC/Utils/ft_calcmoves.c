@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 17:28:27 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/28 14:28:40 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/03 17:44:47 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -40,8 +40,8 @@ void	calcmoves_upup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min)
 
 void	ft_calcnodemap(t_mstck *node, t_mstck **b, size_t sizea)
 {
-	t_mstck	max;
-	t_mstck	min;
+	t_mstck	*max;
+	t_mstck	*min;
 
 	if (b != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:56:43 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/04 11:56:27 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 15:13:57 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sorting.h"
@@ -17,7 +17,7 @@ static void	mapping_to_b(t_mstck **a, t_mstck **b)
 
 	push_b_ntimes_mstck(a, b, 2);
 	sizea = ft_mstcksize(*a);
-	while (sizea > 3)
+	while (sizea > 1)
 	{
 		set_markszero(a);
 		set_mapszero(a);
@@ -30,40 +30,41 @@ static void	mapping_to_b(t_mstck **a, t_mstck **b)
 
 static void	back_to_a(t_mstck **a, t_mstck **b)
 {
-	size_t	r;
-	size_t	sizea;
+	t_mstck	*max;
 	t_mstck	*nodeb;
-	t_mstck	*tmp;
+	t_mstck	*rema;
+	size_t	sizeb;
 
+	max = ft_mstckmax(*b);
+	sizeb = ft_mstcksize(*b);
+	if (max->index != 0)
+	{
+		if (max->index < (sizeb / 2))
+			rotate_b_ntimes_mstck(b, max->index);
+		else
+			rrotate_b_ntimes_mstck(b, sizeb - (max->index));
+	}
+	nodeb = *b;
+	rema = *a;
+	while (nodeb)
+	{
+		if (nodeb->content > rema->content)
+		{
+			push_a_mstck(a, b);
+			nodeb = *b;
+		}
+		else
+			nodeb = NULL;
+	}
+	rrotate_a_mstck(a);
 	nodeb = *b;
 	while (nodeb)
 	{
-//		if (nodeb != NULL)
-//			ft_printf("Node: %p, %L, %i, %p \n", nodeb->prev, nodeb->index, nodeb->content, nodeb->next);
-//		else
-//			ft_printf("Node: NULL\n");
-		tmp = ft_place_asc(nodeb, a);
-//		if (tmp != NULL)
-//			ft_printf("tmp: %p, %L, %i, %p \n", tmp->prev, tmp->index, tmp->content, tmp->next);
-//		else
-//			ft_printf("tmp: NULL\n");
-		r = tmp->index;
-		sizea = ft_mstcksize(*a);
-		if (r < (sizea / 2))
-			rotate_a_ntimes_mstck(a, r);
-		else
-			rrotate_a_ntimes_mstck(a, sizea - r);
 		push_a_mstck(a, b);
 		nodeb = *b;
 	}
-	tmp = ft_mstckmin(*a);
-	r = tmp->index;
-	if (r < (sizea / 2))
-		rotate_a_ntimes_mstck(a, r);
-	else
-		rrotate_a_ntimes_mstck(a, sizea - r);
 }
-
+/*
 static void	cases_asc(t_mstck **a, t_mstck *max, t_mstck *min)
 {
 	if (max->index == 2)
@@ -102,7 +103,7 @@ static void	ft_three_asc(t_mstck **a, t_mstck **b)
 		}
 	}
 }
-
+*/
 void	ft_quirkysort(t_mstck **a, t_mstck **b)
 {
 	if (a != NULL && b != NULL)
@@ -112,7 +113,7 @@ void	ft_quirkysort(t_mstck **a, t_mstck **b)
 //			ft_printf("Mapping\n");
 			mapping_to_b(a, b);
 //			ft_printf("Sorting mstck a\n");
-			ft_three_asc(a, b);
+		//	ft_three_asc(a, b);
 //			ft_printf("Going back to mstck b\n");
 			back_to_a(a, b);
 		}

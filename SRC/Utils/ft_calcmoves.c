@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 17:28:27 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/03 17:44:47 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 17:17:23 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -50,9 +50,9 @@ void	ft_calcnodemap(t_mstck *node, t_mstck **b, size_t sizea)
 			max = ft_mstckmax(*b);
 			min = ft_mstckmin(*b);
 			calcmoves_upup(node, b, max, min);
-			calcmoves_updown(node, b, max, min);
-			calcmoves_downdown(node, b, max, min, sizea);
-			calcmoves_downup(node, b, max, min, sizea);
+			calcmoves_ud(node, b, max, min);
+			calcmoves_ddown(node, b, max, sizea);
+			calcmoves_du(node, b, max, sizea);
 		}
 	}
 }

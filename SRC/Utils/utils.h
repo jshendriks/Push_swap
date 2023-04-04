@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:39:32 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/03 17:22:02 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 17:16:57 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,11 +127,11 @@ void	cleanup_moves(t_moves *move);
 /*...*/
 void	calcmoves_upup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min);
 /*...*/
-void	calcmoves_updown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min);
+void	calcmoves_ud(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min);
 /*...*/
-void	calcmoves_downdown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, size_t sizea);
+void	calcmoves_ddown(t_mstck *node, t_mstck **b, t_mstck *max, size_t sizea);
 /*...*/
-void	calcmoves_downup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, size_t sizea);
+void	calcmoves_du(t_mstck *node, t_mstck **b, t_mstck *max, size_t sizea);
 /*...*/
 void	ft_calcnodemap(t_mstck *node, t_mstck **b, size_t sizea);
 /*...*/

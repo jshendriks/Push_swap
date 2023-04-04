@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 14:05:17 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/03 16:27:50 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 16:54:57 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -39,7 +39,6 @@ static void	exec_rotates(t_moves *move, t_mstck **a, t_mstck **b)
 		rrotate_b_ntimes_mstck(b, move->rrb);
 	if (move->rrr != 0)
 		rrotate_ab_ntimes_mstck(a, b, move->rrr);
-
 }
 
 static void	exec_swaps_push(t_moves *move, t_mstck **a, t_mstck **b)

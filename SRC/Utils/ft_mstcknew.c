@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 14:36:51 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/28 14:27:03 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 17:11:36 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -33,6 +33,47 @@ static t_moves	*ft_movesnew(void)
 	return (moves);
 }
 
+static t_map	*ft_free_incommap(t_map *map)
+{	
+	if (map->upup == NULL)
+		return (free(map), NULL);
+	else if (map->updown == NULL)
+	{
+		free(map->upup);
+		return (free(map), NULL);
+	}
+	else if (map->downdown == NULL)
+	{
+		free(map->upup);
+		free(map->updown);
+		return (free(map), NULL);
+	}
+	else
+	{
+		free(map->upup);
+		free(map->updown);
+		free(map->downdown);
+		return (free(map), NULL);
+	}
+}
+
+static t_map	*ft_allocmoves(t_map *map)
+{
+	map->upup = ft_movesnew();
+	if (map->upup == NULL)
+		return (ft_free_incommap(map));
+	map->updown = ft_movesnew();
+	if (map->updown == NULL)
+		return (ft_free_incommap(map));
+	map->downdown = ft_movesnew();
+	if (map->downdown == NULL)
+		return (ft_free_incommap(map));
+	map->downup = ft_movesnew();
+	if (map->downup == NULL)
+		return (ft_free_incommap(map));
+	return (map);
+}
+
 static t_map	*ft_mapnew(void)
 {
 	t_map	*map;
@@ -40,31 +81,7 @@ static t_map	*ft_mapnew(void)
 	map = malloc(sizeof(t_map));
 	if (map == NULL)
 		return (NULL);
-	map->upup = ft_movesnew();
-	if (map->upup == NULL)
-		return (free(map), NULL);
-	map->updown = ft_movesnew();
-	if (map->updown == NULL)
-	{
-		free(map->upup);
-		return (free(map), NULL);
-	}
-	map->downdown = ft_movesnew();
-	if (map->downdown == NULL)
-	{
-		free(map->upup);
-		free(map->updown);
-		return (free(map), NULL);
-	}
-	map->downup = ft_movesnew();
-	if (map->downup == NULL)
-	{
-		free(map->upup);
-		free(map->updown);
-		free(map->downdown);
-		return (free(map), NULL);
-	}
-	return (map);
+	return (ft_allocmoves(map));
 }
 
 t_mstck	*ft_mstcknew(int content)

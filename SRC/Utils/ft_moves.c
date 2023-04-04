@@ -6,50 +6,10 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/28 11:40:30 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/28 12:20:47 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 16:58:42 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
-
-static void	set_moveszero(t_moves *move)
-{
-	if (move != NULL)
-	{	
-		move->ra = 0;
-		move->rb = 0;
-		move->rr = 0;
-		move->rra = 0;
-		move->rrb = 0;
-		move->rrr = 0;
-		move->sa = 0;
-		move->sb = 0;
-		move->ss = 0;
-		move->pa = 0;
-		move->pb = 0;
-		move->total = 0;
-	}
-}
-
-void	set_mapszero(t_mstck **a)
-{
-	t_mstck	*node;
-
-	if (a != NULL)
-	{
-		if (*a != NULL)
-		{
-			node = *a;
-			while (node)
-			{
-				set_moveszero(((node->map)->upup));
-				set_moveszero((node->map)->updown);
-				set_moveszero((node->map)->downdown);
-				set_moveszero((node->map)->downup);
-				node = node->next;
-			}
-		}
-	}
-}
 
 static void	cleanup_rotate(t_moves *move)
 {
@@ -69,7 +29,7 @@ static void	cleanup_rotate(t_moves *move)
 	{
 		if (move->rra <= move->rrb)
 			temp = move->rra;
-		else 
+		else
 			temp = move->rrb;
 		move->rrr = temp;
 		(move->rra) -= temp;

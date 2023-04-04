@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/28 13:35:50 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/03 17:43:25 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 17:17:01 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -15,12 +15,12 @@ static void	check_updown(t_moves *move, size_t temp, size_t sizeb)
 {
 	if (temp == sizeb)
 		move->rrb = 0;
-	else 
+	else
 		move->rrb = temp;
 	(move->pb) += 1;
 }
 
-void	calcmoves_updown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min)
+void	calcmoves_ud(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min)
 {
 	t_moves	*move;
 	t_mstck	*place;
@@ -42,15 +42,17 @@ void	calcmoves_updown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min)
 	cleanup_moves(move);
 }
 
-void	calcmoves_downdown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, size_t sizea)
+void	calcmoves_ddown(t_mstck *node, t_mstck **b, t_mstck *max, size_t sizea)
 {
 	t_moves	*move;
 	t_mstck	*place;
+	t_mstck	*min;
 	size_t	sizeb;
 	size_t	temp;
-	
+
 	move = ((node->map)->downdown);
 	temp = sizea - (node->index);
+	min = ft_mstckmin(*b);
 	if (temp != sizea)
 		move->rra = temp;
 	sizeb = ft_mstcksize(*b);
@@ -67,14 +69,16 @@ void	calcmoves_downdown(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, 
 	cleanup_moves(move);
 }
 
-void	calcmoves_downup(t_mstck *node, t_mstck **b, t_mstck *max, t_mstck *min, size_t sizea)
+void	calcmoves_du(t_mstck *node, t_mstck **b, t_mstck *max, size_t sizea)
 {
 	t_moves	*move;
 	t_mstck	*place;
+	t_mstck	*min;
 	size_t	temp;
 
 	move = ((node->map)->downup);
 	temp = sizea - (node->index);
+	min = ft_mstckmin(*b);
 	if (temp != sizea)
 		move->rra = temp;
 	if ((node->content < min->content) || (node->content > max->content))

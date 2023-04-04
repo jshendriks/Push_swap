@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/28 14:31:01 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/04 09:58:22 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 16:55:32 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -40,7 +40,6 @@ static void	mark(t_mstck **a, size_t best)
 	nodea = *a;
 	while (nodea)
 	{
-
 		if (((nodea->map)->upup)->total == best)
 			nodea->mark = 1;
 		else if (((nodea->map)->updown)->total == best)

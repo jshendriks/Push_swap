@@ -6,7 +6,7 @@
 #    By: jhendrik <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/09 18:24:29 by jhendrik      #+#    #+#                  #
-#    Updated: 2023/04/03 17:29:48 by jhendrik      ########   odam.nl          #
+#    Updated: 2023/04/04 12:24:48 by jhendrik      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,8 @@ SRCFILES := ./SRC/Sorting/insertionsort.c		\
 			./SRC/Utils/exec_best.c				\
 			./SRC/Utils/ft_calcmoves.c			\
 			./SRC/Utils/ft_moves.c				\
-			./SRC/main_test.c
+			./SRC/Utils/ft_markbest.c			\
+			./SRC/main.c
 
 OBJFILES := $(SRCFILES:.c=.o)
 CFLAGS ?= -Wall -Werror -Wextra

@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:56:43 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/03 17:36:10 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 11:56:27 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sorting.h"
@@ -38,7 +38,15 @@ static void	back_to_a(t_mstck **a, t_mstck **b)
 	nodeb = *b;
 	while (nodeb)
 	{
+//		if (nodeb != NULL)
+//			ft_printf("Node: %p, %L, %i, %p \n", nodeb->prev, nodeb->index, nodeb->content, nodeb->next);
+//		else
+//			ft_printf("Node: NULL\n");
 		tmp = ft_place_asc(nodeb, a);
+//		if (tmp != NULL)
+//			ft_printf("tmp: %p, %L, %i, %p \n", tmp->prev, tmp->index, tmp->content, tmp->next);
+//		else
+//			ft_printf("tmp: NULL\n");
 		r = tmp->index;
 		sizea = ft_mstcksize(*a);
 		if (r < (sizea / 2))
@@ -101,8 +109,11 @@ void	ft_quirkysort(t_mstck **a, t_mstck **b)
 	{
 		if (*a != NULL && *b == NULL)
 		{
+//			ft_printf("Mapping\n");
 			mapping_to_b(a, b);
+//			ft_printf("Sorting mstck a\n");
 			ft_three_asc(a, b);
+//			ft_printf("Going back to mstck b\n");
 			back_to_a(a, b);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/28 14:31:01 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/03 13:43:35 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 09:58:22 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -70,7 +70,6 @@ void	set_markszero(t_mstck **a)
 
 void	ft_markbest(t_mstck **a)
 {
-	t_mstck	*nodea;
 	size_t	best;
 
 	set_markszero(a);

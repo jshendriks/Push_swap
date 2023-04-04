@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/28 10:40:43 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/28 11:18:46 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/04 10:44:20 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "src.h"
@@ -27,7 +27,7 @@ static int	ft_printfstack(t_mstck *stck)
 	{
 		while (tmp != NULL)
 		{
-			wrt = ft_printf("Node %i: %p, %L, %i, %p", i, tmp->prev, tmp->index, tmp->content, tmp->next);
+			wrt = ft_printf("Node %i: %p, %L, %i, %i, %p", i, tmp->prev, tmp->index, tmp->content, tmp->mark, tmp->next);
 			if (wrt == -1)
 				return (-1);
 			wrt = ft_printf("\t Own ptr: %p\n", tmp);
@@ -40,7 +40,7 @@ static int	ft_printfstack(t_mstck *stck)
 	}
 	return (rtn);
 }
-
+/*
 static int	ft_printfnode(t_mstck *node)
 {
 	int	wrt;
@@ -70,6 +70,68 @@ static int	after_first_check(int argc, char *argv[])
 		ft_printfstack(b);
 		ft_printf("Output: \n");
 		ft_printfnode(ft_place(b, &a));
+		if (a != NULL)
+			ft_mstckclear(&a);
+		if (b != NULL)
+			ft_mstckclear(&b);
+		ft_stackclear(&temp);
+		return (1);
+	}
+	ft_stackclear(&temp);
+	return (0);
+}
+
+static int	after_first_check(int argc, char *argv[])
+{
+	t_stack	*temp;
+	t_mstck	*a;
+	t_mstck	*b;
+
+	temp = ft_makestack_int(argc, argv);
+	if (temp == NULL)
+		return (0);
+	if (check_doubles(temp) == 1)
+	{
+		a = ft_makemstck_int(argc, argv);
+		b = NULL;
+		push_b_ntimes_mstck(&a, &b, 4);
+		ft_printf("Input: \n");
+		ft_printfstack(a);
+		ft_printfstack(b);
+		ft_printf("Output: \n");
+		ft_calcmaps(&a, &b);
+		ft_markbest(&a);
+		ft_printfstack(a);
+		if (a != NULL)
+			ft_mstckclear(&a);
+		if (b != NULL)
+			ft_mstckclear(&b);
+		ft_stackclear(&temp);
+		return (1);
+	}
+	ft_stackclear(&temp);
+	return (0);
+}
+*/
+static int	after_first_check(int argc, char *argv[])
+{
+	t_stack	*temp;
+	t_mstck	*a;
+	t_mstck	*b;
+
+	temp = ft_makestack_int(argc, argv);
+	if (temp == NULL)
+		return (0);
+	if (check_doubles(temp) == 1)
+	{
+		a = ft_makemstck_int(argc, argv);
+		b = NULL;
+		ft_printf("Input: \n");
+		ft_printfstack(a);
+		ft_printfstack(b);
+		ft_quirkysort(&a, &b);
+		ft_printf("Output: \n");
+		ft_printfstack(a);
 		if (a != NULL)
 			ft_mstckclear(&a);
 		if (b != NULL)

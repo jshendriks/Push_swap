@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 12:06:19 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 12:07:56 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/06 13:23:39 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -42,18 +42,21 @@ void	ft_stackclear(t_stack **stck)
 	t_stack	*tmp_cur;
 	t_stack	*tmp_prv;
 
-	if (*stck != NULL)
+	if (stck != NULL)
 	{
-		tmp_cur = *stck;
-		if (tmp_cur->prev != NULL)
-			tmp_cur->prev->next = NULL;
-		tmp_prv = NULL;
-		while (tmp_cur != NULL)
+		if (*stck != NULL)
 		{
-			tmp_prv = tmp_cur;
-			tmp_cur = tmp_cur->next;
-			ft_stackdelone(tmp_prv);
+			tmp_cur = *stck;
+			if (tmp_cur->prev != NULL)
+				(tmp_cur->prev)->next = NULL;
+			tmp_prv = NULL;
+			while (tmp_cur != NULL)
+			{
+				tmp_prv = tmp_cur;
+				tmp_cur = tmp_cur->next;
+				ft_stackdelone(tmp_prv);
+			}
+			*stck = NULL;
 		}
-		*stck = NULL;
 	}
 }

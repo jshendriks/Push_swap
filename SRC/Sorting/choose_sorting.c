@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/04 16:24:45 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/04 16:45:08 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/06 12:16:33 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sorting.h"
@@ -35,19 +35,19 @@ static int	ft_errormessage_mstck(t_mstck **a, t_mstck **b, char *mess, int fd)
 
 static int	quirkysorting(int argc, char *argv[])
 {
-	t_mstck	*ac;
-	t_mstck	*bc;
+	t_mstck	*aa;
+	t_mstck	*bb;
 
-	ac = ft_makemstck_int(argc, argv);
-	bc = NULL;
-	if (ac == NULL)
-		return (ft_errormessage_mstck(&ac, &bc, "Error\n", 2));
+	aa = ft_makemstck_int(argc, argv);
+	bb = NULL;
+	if (aa == NULL)
+		return (ft_errormessage_mstck(&aa, &bb, "Error\n", 2));
 	else
-		ft_quirkysort(&ac, &bc);
-	if (ac != NULL)
-		ft_mstckclear(&ac);
-	if (bc != NULL)
-		ft_mstckclear(&bc);
+		ft_quirkysort(&aa, &bb);
+	if (aa != NULL)
+		ft_mstckclear(&aa);
+	if (bb != NULL)
+		ft_mstckclear(&bb);
 	return (1);
 }
 
@@ -69,8 +69,6 @@ int	ft_sorting(int argc, char *argv[], t_stack **a)
 	{
 		if (size_a < 7)
 			ft_smallsort(a, &b);
-		else if (size_a < 16)
-			ft_insertionsort_asc(a, 'a');
 		else
 			return (quirkysorting(argc, argv));
 	}

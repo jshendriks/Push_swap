@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 14:50:52 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:58:23 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/06 13:24:57 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -56,18 +56,21 @@ void	ft_mstckclear(t_mstck **stck)
 	t_mstck	*tmp_cur;
 	t_mstck	*tmp_prv;
 
-	if (*stck != NULL)
+	if (stck != NULL)
 	{
-		tmp_cur = *stck;
-		if (tmp_cur->prev != NULL)
-			(tmp_cur->prev)->next = NULL;
-		tmp_prv = NULL;
-		while (tmp_cur != NULL)
+		if (*stck != NULL)
 		{
-			tmp_prv = tmp_cur;
-			tmp_cur = tmp_cur->next;
-			ft_mstckdelone(tmp_prv);
+			tmp_cur = *stck;
+			if (tmp_cur->prev != NULL)
+				(tmp_cur->prev)->next = NULL;
+			tmp_prv = NULL;
+			while (tmp_cur != NULL)
+			{
+				tmp_prv = tmp_cur;
+				tmp_cur = tmp_cur->next;
+				ft_mstckdelone(tmp_prv);
+			}
+			*stck = NULL;
 		}
-		*stck = NULL;
 	}
 }

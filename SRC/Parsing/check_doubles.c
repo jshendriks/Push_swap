@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:21:41 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 11:28:10 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/06 12:10:25 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -28,7 +28,7 @@ int	check_doubles(t_stack *stck)
 	if (stck != NULL)
 	{
 		node1 = stck;
-		while (node1->next)
+		while (node1)
 		{
 			node2 = node1->next;
 			while (node2)

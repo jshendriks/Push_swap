@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:37:37 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 11:39:16 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/06 12:07:51 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "./../src.h"
@@ -30,6 +30,5 @@ void	ft_free_double(char **ptr_subs)
 		free(ptr_subs[k]);
 		k++;
 	}
-	free(ptr_subs[k]);
 	free(ptr_subs);
 }

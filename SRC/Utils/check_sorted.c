@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 11:30:39 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/03/09 11:36:35 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/06 09:46:45 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "./../src.h"
@@ -20,8 +20,7 @@
 		by iterating through the stack. 
 		If a is NULL, it returns -2.
 		If a is not sorted in ascending order,
-		it returns the index of the node where the
-		ascending order is interrupted.
+		it returns zero.
 		Otherwise, it returns -1.
  * issorted_des(t_stack *a) 		CHANGED CODE BUT COMMENT NOT UPDATED!!!
 		This function checks whether the given
@@ -29,8 +28,7 @@
 		by iterating through the stack.
 		If a is NULL, it returns -2.
 		If a is not sorted in descending order,
-		it returns the index of the node where the 
-		descending order is interrupted.
+		it returns zero.
 		Otherwise, it returns -1.
  */
 
@@ -44,7 +42,7 @@ int	issorted_asc(t_stack *a)
 	while (node != NULL && node->next != NULL)
 	{
 		if (node->content > node->next->content)
-			return (node->index);
+			return (0);
 		node = node->next;
 	}
 	return (-1);
@@ -60,7 +58,7 @@ int	issorted_des(t_stack *a)
 	while (node != NULL && node->next != NULL)
 	{
 		if (node->content < node->next->content)
-			return (node->index);
+			return (0);
 		node = node->next;
 	}
 	return (-1);

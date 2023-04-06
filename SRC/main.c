@@ -6,7 +6,7 @@
 /*   By: jhendrik <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/09 18:46:42 by jhendrik      #+#    #+#                 */
-/*   Updated: 2023/04/04 16:39:15 by jhendrik      ########   odam.nl         */
+/*   Updated: 2023/04/06 12:14:02 by jhendrik      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "src.h"
@@ -35,38 +35,38 @@ static int	ft_errormessage(t_stack **a, t_stack **b, char *mess, int fd)
 
 static int	after_first_check(int argc, char *argv[])
 {
-	t_stack	*tmp;
-	t_stack	*tmp2;
+	t_stack	*tmpa;
+	t_stack	*tmpb;
 	int		rtn;
 
-	tmp = ft_makestack_int(argc, argv);
-	tmp2 = NULL;
-	if (tmp == NULL)
-		return (ft_errormessage(&tmp, &tmp2, "Error\n", 2));
-	if (check_doubles(tmp) == 1)
+	tmpa = ft_makestack_int(argc, argv);
+	tmpb = NULL;
+	if (tmpa == NULL)
+		return (ft_errormessage(&tmpa, &tmpb, "Error\n", 2));
+	if (check_doubles(tmpa) == 1)
 	{
-		if (issorted_asc(tmp) >= 0)
+		if (issorted_asc(tmpa) == 0)
 		{
-			rtn = ft_sorting(argc, argv, &tmp);
-			if (tmp != NULL)
-				ft_stackclear(&tmp);
+			rtn = ft_sorting(argc, argv, &tmpa);
+			if (tmpa != NULL)
+				ft_stackclear(&tmpa);
 			return (rtn);
 		}
 		else
-			return (ft_errormessage(&tmp, &tmp2, "Already sorted\n", 2));
+			return (ft_free(&tmpa, &tmpb));
 	}
 	else
-		return (ft_errormessage(&tmp, &tmp2, "Error\n", 2));
+		return (ft_errormessage(&tmpa, &tmpb, "Error\n", 2));
 }
 
 int	main(int argc, char *argv[])
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	*tmpa;
+	t_stack	*tmpb;
 	int		rtn;
 
-	a = NULL;
-	b = NULL;
+	tmpa = NULL;
+	tmpb = NULL;
 	if (argc > 1)
 	{
 		if (check_input_nums(argc, argv) == 1)
@@ -75,7 +75,7 @@ int	main(int argc, char *argv[])
 			return (rtn);
 		}
 		else
-			return (ft_errormessage(&a, &b, "Error\n", 2));
+			return (ft_errormessage(&tmpa, &tmpb, "Error\n", 2));
 	}
 	return (0);
 }
